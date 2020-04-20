@@ -17,12 +17,10 @@ const AddCounter = () => {
   const [steps, setSteps] = useState([]);
 
   function handleStep(e) {
-    if (!e.target.value.match("^[0-9]*$")) {
-      console.log(e.target.value);
+    const pattern = /^[-+]?(\d+)?([.]?\d{0,1})?$/;
+    if (e.target.value === "" || pattern.test(e.target.value)) {
       setStep(e.target.value);
     }
-    // const roundedValue = Math.floor(e.target.value * 10) / 10;
-    // setStep(roundedValue);
   }
 
   function handleSubmit(e) {
@@ -43,13 +41,27 @@ const AddCounter = () => {
         <div>
           <label htmlFor="step">
             <input
-              type="string"
+              type="text"
               name="step"
-              value={step}
+              value={step !== 0 ? step : ""}
               onChange={handleStep}
               placeholder="Step"
             />
+            {/* <NumberFormat
+              decimalScale={1}
+              placeholder="Step"
+              value={step}
+              onValueChange={(values) => {
+                const { floatValue } = values;
+                return setStep(floatValue);
+              }}
+              isAllowed={(values) => {
+                const { formattedValue, floatValue } = values;
+                return formattedValue === "" || floatValue <= 1000000000;
+              }}
+            /> */}
           </label>
+
           <button type="submit">Add Counter</button>
         </div>
       </form>

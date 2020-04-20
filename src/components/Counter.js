@@ -31,7 +31,7 @@ const Counter = ({ step }) => {
       <div className="bar">
         <p>Step: {step}</p>
       </div>
-      <h1>{count}</h1>
+      <h2>{count}</h2>
       <button type="button" onClick={handleClick}>
         Run
       </button>

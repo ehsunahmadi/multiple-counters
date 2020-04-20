@@ -7,8 +7,8 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-template-rows: repeat(3, 180px [col-start]);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(3, 300px [col-start]);
   grid-gap: 1rem;
 `;
 

@@ -18,7 +18,7 @@ const AddCounter = () => {
   const [steps, setSteps] = useState([]);
 
   function handleStep(e) {
-    if (e.target.value >= 999999999999999) {
+    if (e.target.value >= 9999999 || e.target.value <= -999999) {
       return console.error("number is too big!");
     }
     const pattern = /^[-+]?(\d+)?([.]?\d{0,1})?$/;

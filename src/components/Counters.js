@@ -8,9 +8,10 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-auto-rows: 150px;
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 5fr));
+  grid-auto-rows: 320px;
+  grid-gap: 2rem;
+  grid-auto-flow: dense;
 `;
 
 const Counters = ({ steps }) => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
 import Counters from "./Counters";
 
 const StyledContainer = styled.div`
@@ -17,6 +18,9 @@ const AddCounter = () => {
   const [steps, setSteps] = useState([]);
 
   function handleStep(e) {
+    if (e.target.value >= 999999999999999) {
+      return console.error("number is too big!");
+    }
     const pattern = /^[-+]?(\d+)?([.]?\d{0,1})?$/;
     if (e.target.value === "" || pattern.test(e.target.value)) {
       setStep(e.target.value);
@@ -47,19 +51,6 @@ const AddCounter = () => {
               onChange={handleStep}
               placeholder="Step"
             />
-            {/* <NumberFormat
-              decimalScale={1}
-              placeholder="Step"
-              value={step}
-              onValueChange={(values) => {
-                const { floatValue } = values;
-                return setStep(floatValue);
-              }}
-              isAllowed={(values) => {
-                const { formattedValue, floatValue } = values;
-                return formattedValue === "" || floatValue <= 1000000000;
-              }}
-            /> */}
           </label>
 
           <button type="submit">Add Counter</button>

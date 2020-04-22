@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
     color: #393939;
   }
   button {
-    font-family: Helvetica Neue', sans-serif; 
+    font-family: Helvetica, sans-serif; 
     padding: 1rem;
   }
 

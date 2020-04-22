@@ -6,10 +6,56 @@ import Counters from "./Counters";
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  form {
-    display: flex;
-    justify-content: center;
-    margin: 50px 0;
+  .form-container {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    form {
+      display: flex;
+      justify-content: center;
+      height: 100px;
+      width: 30%;
+      min-width: 250px;
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      div {
+        width: 100%;
+        position: relative;
+        display: flex;
+        font-size: 20px;
+
+        input {
+          width: 100%;
+          border: 3px solid #4f98d9;
+          border-right: none;
+          padding: 5px;
+          height: 50px;
+          border-radius: 5px 0 0 5px;
+          outline: none;
+          font-size: 2rem;
+          color: #9dbfaf;
+        }
+        input:focus,
+        input:active {
+          color: #4f98d9;
+        }
+
+        button {
+          width: 300px;
+          height: 50px;
+          border: 1px solid #4f98d9;
+          background: #4f98d9;
+          text-align: center;
+          color: #fff;
+          border-radius: 0 5px 5px 0;
+          cursor: pointer;
+          font-size: 2rem;
+        }
+      }
+    }
   }
 `;
 
@@ -41,21 +87,22 @@ const AddCounter = () => {
 
   return (
     <StyledContainer>
-      <form onSubmit={handleSubmit} noValidate>
-        <div>
-          <label htmlFor="step">
+      <div className="form-container">
+        <form onSubmit={handleSubmit} noValidate>
+          <div>
             <input
               type="text"
               name="step"
-              value={step !== 0 ? step : ""}
+              value={step}
               onChange={handleStep}
               placeholder="Step"
+              autoFocus
+              autoComplete="off"
             />
-          </label>
-
-          <button type="submit">Add Counter</button>
-        </div>
-      </form>
+            <button type="submit">Add Counter</button>
+          </div>
+        </form>
+      </div>
       <Counters steps={steps} />
     </StyledContainer>
   );

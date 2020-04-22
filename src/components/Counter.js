@@ -16,9 +16,9 @@ const StyledCounter = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   overflow: hidden;
-  background: #5399d7;
+  background: #4f98d9;
   box-shadow: 0 1rem 1rem rgba(black, 0.05);
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   max-width: 100%;
   background-image: linear-gradient(140deg, #ecc68a, transparent 70%);
   .bar {
@@ -27,7 +27,7 @@ const StyledCounter = styled.div`
     width: 100%;
     h4 {
       font-size: 1.4rem;
-      border-bottom: 2px #333 solid;
+      border-bottom: 1px #333 solid;
 
       /* text-align: center; */
     }

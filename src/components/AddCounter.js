@@ -1,110 +1,83 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-
+import React, { useState } from "react";
 import Counters from "./Counters";
 
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  .form-container {
-    position: relative;
-    width: 100%;
-    height: 30vh;
-    form {
-      display: flex;
-      justify-content: center;
-      height: 100px;
-      width: 30%;
-      min-width: 250px;
-      position: absolute;
-      top: 20vh;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
-      div {
-        width: 100%;
-        position: relative;
-        display: flex;
-        font-size: 20px;
-
-        input {
-          width: 100%;
-          border: 3px solid #4f98d9;
-          border-right: none;
-          padding: 5px;
-          height: 50px;
-          border-radius: 5px 0 0 5px;
-          outline: none;
-          font-size: 2rem;
-          color: #9dbfaf;
-        }
-        input:focus,
-        input:active {
-          color: #4f98d9;
-        }
-
-        button {
-          width: 300px;
-          height: 50px;
-          border: 1px solid #4f98d9;
-          background: #4f98d9;
-          text-align: center;
-          color: #fff;
-          border-radius: 0 5px 5px 0;
-          cursor: pointer;
-          font-size: 2rem;
-        }
-      }
-    }
-  }
-`;
-
+//Parent Components that contains the form and its states and also wraps the counters sending it the array of every submitted steps with props
 const AddCounter = () => {
   const [step, setStep] = useState("");
   const [steps, setSteps] = useState([]);
+  const [error, setError] = useState("");
 
+  // controls input value
   function handleStep(e) {
-    if (e.target.value >= 9999999 || e.target.value <= -999999) {
-      return console.error("number is too big!");
+    const { value } = e.target;
+    // blocks too-big or too-small inputs, taking advantage of js' dynamic types
+    if (value >= 10000) {
+      console.error(value);
+      return setError("Try entering a number smaller than 10,000");
     }
+    if (value <= -10000) {
+      console.error(value);
+      return setError("Try entering a number biger than -10,000");
+    }
+
+    // checks for a string representation of a number with one decimal to set the input value
     const pattern = /^[-+]?(\d+)?([.]?\d{0,1})?$/;
-    if (e.target.value === "" || pattern.test(e.target.value)) {
-      setStep(e.target.value);
+    if (value === "" || pattern.test(value)) {
+      setStep(value);
+    } else {
+      return setError("Try entering a number instead!");
     }
   }
 
+  // sets new input value to the steps array to send it to Counters component with props
   function handleSubmit(e) {
     e.preventDefault();
-    if (step) {
+    // validation after input entry. makes sure zero or empty step doesn't trigger the event
+    if (!step) {
+      return setError("Try entering a number first!");
+    }
+    if (parseFloat(step) === 0) {
+      return setError("Try entering a number other than 0");
+    }
+    // turns the input string into a number and pushes it steps state
+    else {
       setSteps([...steps, parseFloat(step)]);
       setStep("");
     }
   }
 
-  useEffect(() => {
-    console.log(steps);
-  }, [steps]);
+  // reads the error from the error state and clears it up after. would be conditionally rendered inside the component using && operator.
+  const Error = () => {
+    setTimeout(() => {
+      setError("");
+    }, 3600);
+    return <p className="error">{error}</p>;
+  };
 
   return (
-    <StyledContainer>
+    <div className="main-container">
       <div className="form-container">
         <form onSubmit={handleSubmit} noValidate>
-          <div>
+          <div className="add-box">
             <input
               type="text"
               name="step"
               value={step}
               onChange={handleStep}
-              placeholder="Step"
+              placeholder="Step..."
               autoFocus
               autoComplete="off"
+              className={error && "alarm"}
             />
-            <button type="submit">Add Counter</button>
+            <button className="add-button" type="submit">
+              Add Counter
+            </button>
           </div>
+          {error && <Error />}
         </form>
       </div>
       <Counters steps={steps} />
-    </StyledContainer>
+    </div>
   );
 };
 

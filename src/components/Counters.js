@@ -1,26 +1,15 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
 
-const StyledContainer = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 5fr));
-  grid-auto-rows: 320px;
-  grid-gap: 2rem;
-  grid-auto-flow: dense;
-`;
-
+// Child of AddCounter component, gets the array of steps with props, loops over them and renders a Counter component for each.
 const Counters = ({ steps }) => {
   return (
-    <StyledContainer>
+    <div className="counters-container">
       {steps.map((step, index) => (
         <Counter step={step} key={index} />
       ))}
-    </StyledContainer>
+    </div>
   );
 };
 

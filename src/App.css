@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope&display=swap");
+
+/***********************
+ * Reset & Base Styles *
+ ***********************/
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background-color: #dbdde5;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-main: #5c9dd6;
+  --border-radius: 0.5rem;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Manrope", sans-serif;
+  color: #393939;
+  font-size: 1.5rem;
+}
+
+.main-container {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+@media screen and (min-width: 2160px) {
+  .main-container {
+    max-width: 1600px;
+  }
+}
+
+/********************
+ * Add-Counter Form *
+ ********************/
+.form-container {
+  width: 90%;
+  height: 100px;
+  max-width: 100%;
+  min-height: 25vh;
+  margin: auto;
+  position: relative;
+}
+
+form {
+  height: 100px;
+  width: 100%;
+  min-width: 280px;
+  position: absolute;
+  left: 50%;
+  top: 15vh;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-box {
+  width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  width: 50%;
+  border: 3px solid var(--color-main);
+  border-right: none;
+  padding: 1rem;
+  height: 50px;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  outline: none;
+  color: #97b1c9;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-stretch: extra-expanded;
+  font-family: "Manrope", sans-serif;
+}
+
+input:focus {
+  color: var(--color-main);
+}
+
+.alarm {
+  border-bottom: 2px solid red;
+}
+
+.add-button {
+  height: 50px;
+  width: 50%;
+  border: 1px solid var(--color-main);
+  background: var(--color-main);
+  text-align: center;
+  color: #fff;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-stretch: expanded;
+  font-family: "Manrope", sans-serif;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-weight: 550;
+  margin-top: 1rem;
+}
+
+/************************
+ * Counters Grid Layout *
+ ************************/
+.counters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: 300px;
+}
+
+/****************
+ * Counter Card *
+ ****************/
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+  position: relative;
+  margin: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden;
+  background: var(--color-main);
+  box-shadow: 0 1rem 1rem rgba(black, 0.1);
+  border-radius: var(--border-radius);
+  max-width: 100%;
+  background-image: linear-gradient(140deg, #ecc68a, transparent 70%);
+  border: 1px solid #333;
+}
+
+.bar {
+  height: 20%;
+  padding: 1rem;
+  width: 100%;
+}
+
+.step {
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-bottom: 1px #333 solid;
+}
+
+.count-wrapper {
+  height: 50%;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.count {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 900;
+  color: #111;
+}
+
+.button-wrapper {
+  width: 100%;
+  height: 25%;
+  text-align: center;
+}
+
+/**************
+ * Svg Button *
+ **************/
+.run-button {
+  display: inline-block;
+  height: 55px;
+  width: 55px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.run-button:focus {
+  outline: none;
+}
+
+.run-button:hover::firstc-child {
+  transform: scale(1.1);
+}
+
+svg:hover {
+  transform: scale(1.1);
+}
+
+.run-button::-moz-focus-inner {
+  border: 0;
+}
+
+.run-button::first-child {
+  outline: none;
+  transition: transform 0.15s linear;
+}

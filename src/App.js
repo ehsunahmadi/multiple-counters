@@ -1,11 +1,10 @@
 import React from "react";
 import AddCounter from "./components/AddCounter";
-import GlobalStyles from "./components/globalStyles";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <GlobalStyles />
       <AddCounter />
     </div>
   );

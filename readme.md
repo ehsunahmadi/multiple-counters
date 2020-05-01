@@ -9,6 +9,7 @@ Each time you click on the Add counter button, it will add a new counter on the 
 Each counter has a Run button that clicking on it will add its step value to the current value.  
 Step: -2.6. Results: 0, -2.6, -5.2, -7.8
 
+
 ### Features:
 
 Uses useState hook to manage state  

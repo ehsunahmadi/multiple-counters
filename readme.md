@@ -4,8 +4,10 @@ A number input and a button. It only accept numbers (negative or positive intege
 
 Each time you click on the Add counter button, it will add a new counter on the page that has a default zero value.
 
-Each counter has a Run button that clicking on it will add its step value to the current value. So if we have 3 counters with different steps it would result like this:
-
-Step: 3. Results: 0, 3, 6, 9, 12
-
+Each counter has a Run button that clicking on it will add its step value to the current value.
 Step: -2.6. Results: 0, -2.6, -5.2, -7.8
+
+features:
+Uses useState hook to manage state
+takes advantage of gradients for counters' background-color
+Involves error handling

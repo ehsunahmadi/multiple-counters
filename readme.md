@@ -1,4 +1,4 @@
-# React app + pure css
+# Dynamic Counters with React + CSS-Gradients
 
 ### Details
 
